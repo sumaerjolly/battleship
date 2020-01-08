@@ -1,2 +1,2 @@
 import './style.css';
-alert('Its working');
+alert('is it working?');
