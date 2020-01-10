@@ -1,8 +1,11 @@
-import ship from '../factories/ship'
+import ship from '../factories/ship';
+
 let ship4 = ship(4)
+
 test ('ship create a ship with length equals to 4', () => {
     expect(ship4.length).toBe(4);
 });
+
 test ('ship create a ship with postion equals to []', () => {
     expect(ship4.position).toEqual([]);
 });
@@ -23,4 +26,3 @@ test ('the ship has sunk?', () => {
     ship4.hit(5);
     expect(ship4.isSunk()).toBeTruthy()
 });
-// {length, position, hit, isSunk}
