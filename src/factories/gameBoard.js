@@ -44,7 +44,21 @@ const gameBoard = (() => {
       }
     }
   };
-  return { addMyShip, addOpponentShip, myBoard, oppBoard }
+
+  const receiveAttacks = (board, coordinate) => {
+		if (!board[coordinate]) {
+			return false;
+    }
+    board[coordinate].hit(coordinate)
+		return true;
+  };
+  
+  const resetBoard = () => {
+    myBoard = new Array(100);
+    oppBoard = new Array(100);
+  };
+
+  return { addMyShip, addOpponentShip, receiveAttacks, myBoard, oppBoard, resetBoard }
 });
 
 export default gameBoard;

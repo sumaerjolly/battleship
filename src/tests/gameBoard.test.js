@@ -69,5 +69,35 @@ describe('put ships in right places', () => {
   });
 })
 
+describe('game board define if a ship attacked', () => {
+  let gameBoard4 = gameBoard();
+  const ship4 = ship(4);
+  beforeAll(() => {
+    gameBoard4.addMyShip(ship4, 15, 'h')
+  });
+  test ('It is true when cordinate contains a ship', () => {
+    expect(gameBoard4.receiveAttacks(gameBoard4.myBoard, 15)).toBe(true);
+  });
+  test ('adds the coordinate to the ship position array if attacked', () => {
+    expect(ship4.position).toContain(15);
+  });
+  test ('It is true when cordinate contains a ship', () => {
+    expect(gameBoard4.receiveAttacks(gameBoard4.myBoard, 16)).toBe(true);
+  });
+  test ('adds the coordinate to the ship position array if attacked', () => {
+    expect(ship4.position).toContain(16);
+  });
+  test ('It is false when cordinate does not contain a ship', () => {
+    expect(gameBoard4.receiveAttacks(gameBoard4.myBoard, 19)).toBe(false);
+  });
+  test ('It is false when cordinate does not contain a ship', () => {
+    expect(gameBoard4.receiveAttacks(gameBoard4.myBoard, 25)).toBe(false);
+  });
+  test ('It do not add the same cordinate to the position array', () => {
+    expect(gameBoard4.receiveAttacks(gameBoard4.myBoard, 15)).toBe(true);
+    expect(new Set(ship4.position).size).toBe(ship4.position.length);
+  });
+})
+
 
 
