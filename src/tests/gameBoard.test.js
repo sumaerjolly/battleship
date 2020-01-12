@@ -93,11 +93,37 @@ describe('game board define if a ship attacked', () => {
   test ('It is false when cordinate does not contain a ship', () => {
     expect(gameBoard4.receiveAttacks(gameBoard4.myBoard, 25)).toBe(false);
   });
+  test ('It detect when cordinate does not contain a ship by changing value to "-"', () => {
+    expect(gameBoard4.myBoard[25]).toBe("-");
+  });
   test ('It do not add the same cordinate to the position array', () => {
-    expect(gameBoard4.receiveAttacks(gameBoard4.myBoard, 15)).toBe(true);
+    expect(gameBoard4.receiveAttacks(gameBoard4.myBoard, 15)).toBe(false);
     expect(new Set(ship4.position).size).toBe(ship4.position.length);
   });
-})
+});
+
+describe('detects if all ships are sunk and retrn true', () => {
+  let gameBoard5 = gameBoard();
+  const ship3 = ship(3);
+
+  beforeAll(() => {
+    gameBoard5.addMyShip(ship3, 21, 'h');
+  });
+  test ('detects if all ships are sunk and retrn true', () => {
+    gameBoard5.receiveAttacks(gameBoard5.myBoard, 21);
+    expect(gameBoard5.allSunk).toBeFalsy;
+  });
+  test ('detects if all ships are sunk and retrn true', () => {
+    gameBoard5.receiveAttacks(gameBoard5.myBoard, 22);
+    expect(gameBoard5.allSunk).toBeFalsy;
+  });
+  test ('detects if all ships are sunk and retrn true', () => {
+    gameBoard5.receiveAttacks(gameBoard5.myBoard, 23);
+    expect(gameBoard5.allSunk).toBeTruthy;
+  });
+});
+
+
 
 
 

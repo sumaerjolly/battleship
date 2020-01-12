@@ -47,18 +47,28 @@ const gameBoard = (() => {
 
   const receiveAttacks = (board, coordinate) => {
 		if (!board[coordinate]) {
-			return false;
+      board[coordinate] = "-"
+      return false;
+    } else if (board[coordinate] === "x") {
+      return false;
+    } else if (board[coordinate] !== "-" && board[coordinate] !== "x"){
+      board[coordinate].hit(coordinate);
+      board[coordinate] = "x";
+      return true;
     }
-    board[coordinate].hit(coordinate)
-		return true;
   };
-  
+
+  const allSunk = (board) => {
+    return board.every(cordinate => {
+      cordinate === undefined || cordinate === "-" || cordinate === "x"
+    })
+  }
   const resetBoard = () => {
     myBoard = new Array(100);
     oppBoard = new Array(100);
   };
 
-  return { addMyShip, addOpponentShip, receiveAttacks, myBoard, oppBoard, resetBoard }
+  return { addMyShip, addOpponentShip, receiveAttacks, myBoard, oppBoard, resetBoard, allSunk }
 });
 
 export default gameBoard;
