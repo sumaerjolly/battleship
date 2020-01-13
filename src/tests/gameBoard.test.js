@@ -102,22 +102,22 @@ describe('game board define if a ship attacked', () => {
   });
 });
 
-describe('detects if all ships are sunk and retrn true', () => {
+describe('detects if all ships are sunk', () => {
   let gameBoard5 = gameBoard();
   const ship3 = ship(3);
 
   beforeAll(() => {
     gameBoard5.addMyShip(ship3, 21, 'h');
   });
-  test ('detects if all ships are sunk and retrn true', () => {
+  test ('detects if all ships are sunk', () => {
     gameBoard5.receiveAttacks(gameBoard5.myBoard, 21);
     expect(gameBoard5.allSunk).toBeFalsy;
   });
-  test ('detects if all ships are sunk and retrn true', () => {
+  test ('detects if all ships are sunk', () => {
     gameBoard5.receiveAttacks(gameBoard5.myBoard, 22);
     expect(gameBoard5.allSunk).toBeFalsy;
   });
-  test ('detects if all ships are sunk and retrn true', () => {
+  test ('detects if all ships are sunk', () => {
     gameBoard5.receiveAttacks(gameBoard5.myBoard, 23);
     expect(gameBoard5.allSunk).toBeTruthy;
   });
