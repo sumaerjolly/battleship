@@ -1,3 +1,6 @@
-body {
-  background: rgb(243, 34, 34);
+.col-1 {
+  border: 1px solid black;
+  background-color: lightblue;
+  border-radius: 5px;
+  height: 45px;
 }
