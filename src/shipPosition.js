@@ -1,7 +1,7 @@
 import gameBoard from './factories/gameBoard';
 import ship from './factories/ship';
+var board = gameBoard();
 const shipPosition = (() => {
-  var board = gameBoard();
   const myFleet = () => {
     board.addMyShip(ship(4), 45, 'v');
     board.addMyShip(ship(3), 50, 'v');
@@ -27,9 +27,10 @@ const shipPosition = (() => {
     board.addOpponentShip(ship(1), 97, 'v');
   };
 
+  console.log(board.myBoard);
+  console.log(board.oppBoard);
+
   return { myFleet, opponentFleet };
 })();
-// console.log(board.myBoard);
-// console.log(board.oppBoard);
 
 export default shipPosition;

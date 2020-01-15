@@ -24,6 +24,26 @@ const gameBoard = () => {
     return true;
   };
 
+  const checkOpponentPlace = (ship, position, orientation) => {
+    if (orientation === 'h' && 10 - (position % 10) < ship.length) {
+      return false;
+    } else if (
+      orientation === 'v' &&
+      10 - Math.floor(position / 10) < ship.length
+    ) {
+      return false;
+    } else {
+      for (let i = 0; i < ship.length; i += 1) {
+        if (orientation === 'v' && oppBoard[position + 10 * i]) {
+          return false;
+        } else if (orientation === 'h' && oppBoard[position + 1 * i]) {
+          return false;
+        }
+      }
+    }
+    return true;
+  };
+
   const addMyShip = (ship, position, orientation) => {
     if (checkPlace(ship, position, orientation)) {
       for (let i = 0; i < ship.length; i += 1) {
@@ -40,13 +60,13 @@ const gameBoard = () => {
   };
 
   const addOpponentShip = (ship, position, orientation) => {
-    if (checkPlace(ship, position, orientation)) {
+    if (checkOpponentPlace(ship, position, orientation)) {
       for (let i = 0; i < ship.length; i += 1) {
         if (orientation === 'v') {
-          myBoard[position + 10 * i] = ship;
+          oppBoard[position + 10 * i] = ship;
         }
         if (orientation === 'h') {
-          myBoard[position + 1 * i] = ship;
+          oppBoard[position + 1 * i] = ship;
         }
       }
     }
