@@ -6,6 +6,11 @@ const start = (() => {
   const user = player('user');
   const computer = player('computer');
   let currPlayer = user;
+  let gameStop = false;
+  let userCount = 0;
+  let computerCount = 0;
+
+  const game = () => {};
 
   return { board };
 })();
