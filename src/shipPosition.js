@@ -1,33 +1,35 @@
 import gameBoard from './factories/gameBoard';
 import ship from './factories/ship';
-
 const shipPosition = (() => {
+  var board = gameBoard();
   const myFleet = () => {
-    gameBoard.addMyShip(ship(4), 45, 'vertical');
-    gameBoard.addMyShip(ship(3), 50, 'vertical');
-    gameBoard.addMyShip(ship(3), 14, 'horizontal');
-    gameBoard.addMyShip(ship(2), 32, 'vertical');
-    gameBoard.addMyShip(ship(2), 38, 'vertical');
-    gameBoard.addMyShip(ship(2), 68, 'horizontal');
-    gameBoard.addMyShip(ship(1), 1, 'vertical');
-    gameBoard.addMyShip(ship(1), 9, 'vertical');
-    gameBoard.addMyShip(ship(1), 89, 'vertical');
-    gameBoard.addMyShip(ship(1), 97, 'vertical');
+    board.addMyShip(ship(4), 45, 'v');
+    board.addMyShip(ship(3), 50, 'v');
+    board.addMyShip(ship(3), 14, 'h');
+    board.addMyShip(ship(2), 32, 'v');
+    board.addMyShip(ship(2), 38, 'v');
+    board.addMyShip(ship(2), 68, 'h');
+    board.addMyShip(ship(1), 1, 'v');
+    board.addMyShip(ship(1), 9, 'v');
+    board.addMyShip(ship(1), 89, 'v');
+    board.addMyShip(ship(1), 97, 'v');
   };
   const opponentFleet = () => {
-    gameBoard.addOpponentShip(ship(4), 12, 'horizontal');
-    gameBoard.addOpponentShip(ship(3), 70, 'vertical');
-    gameBoard.addOpponentShip(ship(3), 82, 'horizontal');
-    gameBoard.addOpponentShip(ship(2), 43, 'vertical');
-    gameBoard.addOpponentShip(ship(2), 28, 'vertical');
-    gameBoard.addOpponentShip(ship(2), 68, 'horizontal');
-    gameBoard.addOpponentShip(ship(1), 35, 'vertical');
-    gameBoard.addOpponentShip(ship(1), 7, 'vertical');
-    gameBoard.addOpponentShip(ship(1), 75, 'vertical');
-    gameBoard.addOpponentShip(ship(1), 97, 'vertical');
+    board.addOpponentShip(ship(4), 12, 'h');
+    board.addOpponentShip(ship(3), 70, 'v');
+    board.addOpponentShip(ship(3), 82, 'h');
+    board.addOpponentShip(ship(2), 43, 'v');
+    board.addOpponentShip(ship(2), 28, 'v');
+    board.addOpponentShip(ship(2), 68, 'h');
+    board.addOpponentShip(ship(1), 35, 'v');
+    board.addOpponentShip(ship(1), 7, 'v');
+    board.addOpponentShip(ship(1), 75, 'v');
+    board.addOpponentShip(ship(1), 97, 'v');
   };
 
   return { myFleet, opponentFleet };
 })();
+// console.log(board.myBoard);
+// console.log(board.oppBoard);
 
-export default { shipPosition };
+export default shipPosition;
