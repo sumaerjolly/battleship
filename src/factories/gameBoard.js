@@ -74,8 +74,9 @@ const gameBoard = () => {
 
   const receiveAttacks = (board, coordinate) => {
     if (!board[coordinate]) {
+      board[coordinate] = '-';
       return '-';
-    } else if (board[coordinate] === 'x' || board[coordinate] === '-') {
+    } else if (board[coordinate] === '-' || board[coordinate] === 'x') {
       return false;
     } else if (board[coordinate] !== '-' && board[coordinate] !== 'x') {
       board[coordinate].hit(coordinate);
@@ -83,11 +84,11 @@ const gameBoard = () => {
     }
   };
 
-  const allSunk = board => {
-    return board.every(cordinate => {
-      cordinate === undefined || cordinate === '-' || cordinate === 'x';
-    });
-  };
+  // const allSunk = board => {
+  //   return board.every(cordinate => {
+  //     cordinate === undefined || cordinate === '-' || cordinate === 'x';
+  //   });
+  // };
   const resetBoard = () => {
     myBoard = new Array(100);
     oppBoard = new Array(100);
@@ -99,8 +100,7 @@ const gameBoard = () => {
     receiveAttacks,
     myBoard,
     oppBoard,
-    resetBoard,
-    allSunk
+    resetBoard
   };
 };
 

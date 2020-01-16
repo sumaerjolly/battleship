@@ -20,19 +20,42 @@ const start = (() => {
       const position = element.getAttribute('id');
       element.addEventListener('click', e => {
         e.preventDefault();
-        if (!gameStop && element.innerHTML === '' ) {
-          const attack = board.receiveAttacks(board.oppBoard, position)
+        if (!gameStop && element.innerHTML === '') {
+          const attack = board.receiveAttacks(board.oppBoard, position);
           if (attack) {
             element.innerHTML = attack;
-            if (attack === 'x' && board.oppBoard[position].isSunk()){
+            if (attack === 'x' && board.oppBoard[position].isSunk()) {
               computerCount += 1;
-              displayInfo.innerHTML = `${10 - computerCount} computer ships left`;
+              displayInfo.innerHTML = `${10 -
+                computerCount} computer ships left`;
             }
           }
         }
+        checkWinner(computerCount, currPlayer);
+        currPlayer = computer;
       });
     });
-    
+  };
+
+  const checkWinner = (count, user) => {
+    if (10 - count <= 0 && !gameStop) {
+      alert(`${user.name} is the winner`);
+      gameStop = true;
+    }
+  };
+
+  const computerPlay = () => {
+    const myShips = document.querySelectorAll('.ships');
+    let moves = [];
+    myShips.forEach(element => {
+      if (!gameStop && element.innerHTML === '') {
+        let compMove = computer.randomMove();
+        if (!moves.includes(compMove)) {
+        }
+        moves.push(compMove);
+        const compAttack = board.receiveAttacks(board.myBoard);
+      }
+    });
   };
 
   return { board, game };
