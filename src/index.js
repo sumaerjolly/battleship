@@ -5,3 +5,4 @@ import start from './dom';
 shipPosition.myFleet();
 shipPosition.opponentFleet();
 start.game();
+start.resetButton();

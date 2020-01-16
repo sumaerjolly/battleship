@@ -75,12 +75,12 @@ const gameBoard = () => {
   const receiveAttacks = (board, coordinate) => {
     if (!board[coordinate]) {
       board[coordinate] = '-';
-      return '-';
+      return 'miss';
     } else if (board[coordinate] === '-' || board[coordinate] === 'x') {
       return false;
     } else if (board[coordinate] !== '-' && board[coordinate] !== 'x') {
       board[coordinate].hit(coordinate);
-      return 'x';
+      return 'hit';
     }
   };
 

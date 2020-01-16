@@ -4,3 +4,8 @@
   border-radius: 5px;
   height: 45px;
 }
+
+.test {
+  background-color: red;
+  font-weight: bold;
+}
