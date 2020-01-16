@@ -3,13 +3,11 @@ import player from './factories/player';
 
 const start = (() => {
   const board = gameBoard();
-  const user = player('user');
+  const humanUser = player('user');
   const computer = player('computer');
   const displayInfo = document.querySelector('.oppInfo');
-  const update = document.querySelector('.oppUpdate');
-  const myUpdate = document.querySelector('.myUpdate');
   const myInfo = document.querySelector('.myInfo');
-  let currPlayer = user;
+  let currPlayer = humanUser;
   let gameStop = false;
   let userCount = 0;
   let computerCount = 0;
@@ -32,7 +30,7 @@ const start = (() => {
           }
         }
         checkWinner(computerCount, currPlayer);
-        currPlayer = computer;
+        computerPlay();
       });
     });
   };
@@ -45,12 +43,28 @@ const start = (() => {
   };
 
   const computerPlay = () => {
-    const myShips = document.querySelectorAll('.ships');   
+    currPlayer = computer;
+    const myShips = document.querySelectorAll('.ships');
+    console.log('I am in here');
+    let randomPosition = computer.randomMove();
+
+    const compAttack = board.receiveAttacks(board.myBoard, randomPosition);
     myShips.forEach(element => {
-      if (!gameStop && element.innerHTML === '') {
-        const compAttack = board.receiveAttacks(board.myBoard, computer.randomMove());
+      const boardId = element.getAttribute('id');
+      if (Number(boardId) === randomPosition) {
+        console.log(boardId);
+        console.log(randomPosition);
+        if (compAttack) {
+          element.innerHTML = compAttack;
+          if (compAttack === 'x' && board.myBoard[randomPosition].isSunk()) {
+            userCount += 1;
+            myInfo.innerHTML = `${10 - userCount} computer ships left`;
+          }
+        }
       }
     });
+    checkWinner(userCount, currPlayer);
+    currPlayer = humanUser;
   };
 
   return { board, game };
