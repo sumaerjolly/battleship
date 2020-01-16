@@ -45,15 +45,10 @@ const start = (() => {
   };
 
   const computerPlay = () => {
-    const myShips = document.querySelectorAll('.ships');
-    let moves = [];
+    const myShips = document.querySelectorAll('.ships');   
     myShips.forEach(element => {
       if (!gameStop && element.innerHTML === '') {
-        let compMove = computer.randomMove();
-        if (!moves.includes(compMove)) {
-        }
-        moves.push(compMove);
-        const compAttack = board.receiveAttacks(board.myBoard);
+        const compAttack = board.receiveAttacks(board.myBoard, computer.randomMove());
       }
     });
   };
