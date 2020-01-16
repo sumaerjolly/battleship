@@ -20,13 +20,22 @@ const start = (() => {
       const position = element.getAttribute('id');
       element.addEventListener('click', e => {
         e.preventDefault();
-        if (!gameStop && element.innerHTML === '') {
+        if (!gameStop && element.innerHTML === '' ) {
+          const attack = board.receiveAttacks(board.oppBoard, position)
+          if (attack) {
+            element.innerHTML = attack;
+            if (attack === 'x' && board.oppBoard[position].isSunk()){
+              computerCount += 1;
+              displayInfo.innerHTML = `${10 - computerCount} computer ships left`;
+            }
+          }
         }
       });
     });
+    
   };
 
-  return { board };
+  return { board, game };
 })();
 
 export default start;

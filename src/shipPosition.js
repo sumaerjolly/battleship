@@ -27,10 +27,6 @@ const shipPosition = (() => {
     newBoard.addOpponentShip(ship(1), 75, 'v');
     newBoard.addOpponentShip(ship(1), 97, 'v');
   };
-
-  console.log(newBoard.myBoard);
-  console.log(newBoard.oppBoard);
-
   return { myFleet, opponentFleet };
 })();
 
