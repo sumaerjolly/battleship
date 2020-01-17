@@ -71,7 +71,7 @@ const gameBoard = () => {
           oppBoard[position + 1 * i] = ship;
         }
       }
-    return true;
+      return true;
     }
     return false;
   };
@@ -81,13 +81,14 @@ const gameBoard = () => {
       board[coordinate] = '-';
       return 'miss';
     } 
-    if (board[coordinate] === '-' || board[coordinate] === 'x') {
-      return false;
-    } 
+    // if (board[coordinate] === '-' || board[coordinate] === 'x') {
+    //   return false;
+    // } 
     if (board[coordinate] !== '-' && board[coordinate] !== 'x') {
       board[coordinate].hit(coordinate);
       return 'hit';
     }
+    return false;
   };
 
   const resetBoard = () => {
