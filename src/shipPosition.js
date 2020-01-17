@@ -1,5 +1,6 @@
 import ship from './factories/ship';
 import start from './dom';
+
 const shipPosition = (() => {
   const newBoard = start.board;
   const myFleet = () => {

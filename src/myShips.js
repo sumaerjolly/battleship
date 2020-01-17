@@ -1,4 +1,4 @@
-const myShips = location => {
+const myShips = (location) => {
   const pageGrid = document.querySelectorAll('.ships');
   pageGrid.forEach((element, index) => {
     if (index === location) {
@@ -8,4 +8,5 @@ const myShips = location => {
     }
   });
 };
+
 export default myShips;

@@ -80,10 +80,7 @@ const gameBoard = () => {
     if (!board[coordinate]) {
       board[coordinate] = '-';
       return 'miss';
-    } 
-    // if (board[coordinate] === '-' || board[coordinate] === 'x') {
-    //   return false;
-    // } 
+    }
     if (board[coordinate] !== '-' && board[coordinate] !== 'x') {
       board[coordinate].hit(coordinate);
       return 'hit';

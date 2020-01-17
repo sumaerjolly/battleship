@@ -5,7 +5,7 @@ const player = (name) => {
     if (!moves.includes(newMove)) {
       moves.push(newMove);
       return newMove;
-    } 
+    }
     return randomMove();
   };
   return { name, randomMove };
