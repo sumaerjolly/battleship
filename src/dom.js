@@ -31,14 +31,6 @@ const start = (() => {
           } else if (attack === 'miss') {
             element.innerHTML = '&#128542';
           }
-          // if (attack) {
-          //   element.innerHTML = attack;
-          //   if (attack === 'x' && board.oppBoard[position].isSunk()) {
-          //     computerCount += 1;
-          //     displayInfo.innerHTML = `${10 -
-          //       computerCount} computer ships left`;
-          //   }
-          // }
           checkWinner(computerCount, currPlayer);
           computerPlay();
         }
@@ -73,13 +65,6 @@ const start = (() => {
         } else if (compAttack === 'miss') {
           element.innerHTML = '&#128542';
         }
-        // if (compAttack) {
-        //   element.innerHTML = compAttack;
-        //   if (compAttack === 'x' && board.myBoard[randomPosition].isSunk()) {
-        //     userCount += 1;
-        //     myInfo.innerHTML = `${10 - userCount} computer ships left`;
-        //   }
-        // }
       }
     });
     checkWinner(userCount, currPlayer);

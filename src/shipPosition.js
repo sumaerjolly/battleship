@@ -1,4 +1,3 @@
-// import gameBoard from './factories/gameBoard';
 import ship from './factories/ship';
 import start from './dom';
 const shipPosition = (() => {

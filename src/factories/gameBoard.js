@@ -84,11 +84,6 @@ const gameBoard = () => {
     }
   };
 
-  // const allSunk = board => {
-  //   return board.every(cordinate => {
-  //     cordinate === undefined || cordinate === '-' || cordinate === 'x';
-  //   });
-  // };
   const resetBoard = () => {
     myBoard = new Array(100);
     oppBoard = new Array(100);

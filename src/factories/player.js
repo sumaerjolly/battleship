@@ -4,10 +4,8 @@ const player = name => {
     let newMove = Math.floor(Math.random() * 100);
     if (!moves.includes(newMove)) {
       moves.push(newMove);
-      console.log(moves);
       return newMove;
     } else {
-      console.log(moves);
       return randomMove();
     }
   };
