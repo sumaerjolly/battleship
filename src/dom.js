@@ -19,9 +19,35 @@ const start = (() => {
     }
   };
 
+  const computerPlay = () => {
+    currPlayer = computer;
+    const myShips = document.querySelectorAll('.ships');
+    const randomPosition = computer.randomMove();
+
+    const compAttack = board.receiveAttacks(board.myBoard, randomPosition);
+    myShips.forEach((element) => {
+      const boardId = element.getAttribute('id');
+      if (Number(boardId) === randomPosition) {
+        if (compAttack === 'hit') {
+          element.innerHTML = '&#10042';
+          element.style.backgroundColor = 'red';
+          element.style.border = '1px solid red';
+          if (board.myBoard[randomPosition].isSunk()) {
+            userCount += 1;
+            myInfo.innerHTML = `${10 - userCount} user ships left`;
+          }
+        } else if (compAttack === 'miss') {
+          element.innerHTML = '&#128542';
+        }
+      }
+    });
+    checkWinner(userCount, currPlayer);
+    currPlayer = humanUser;
+  };
+
   const game = () => {
     const oppositionShips = document.querySelectorAll('.oppShips');
-    oppositionShips.forEach( (element) => {
+    oppositionShips.forEach((element) => {
       const position = element.getAttribute('id');
       element.addEventListener('click', (e) => {
         e.preventDefault();
@@ -45,31 +71,6 @@ const start = (() => {
     });
   };
 
-  const computerPlay = () => {
-    currPlayer = computer;
-    const myShips = document.querySelectorAll('.ships');
-    const randomPosition = computer.randomMove();
-
-    const compAttack = board.receiveAttacks(board.myBoard, randomPosition);
-    myShips.forEach( (element) => {
-      const boardId = element.getAttribute('id');
-      if (Number(boardId) === randomPosition) {
-        if (compAttack === 'hit') {
-          element.innerHTML = '&#10042';
-          element.style.backgroundColor = 'red';
-          element.style.border = '1px solid red';
-          if (board.myBoard[randomPosition].isSunk()) {
-            userCount += 1;
-            myInfo.innerHTML = `${10 - userCount} user ships left`;
-          }
-        } else if (compAttack === 'miss') {
-          element.innerHTML = '&#128542';
-        }
-      }
-    });
-    checkWinner(userCount, currPlayer);
-    currPlayer = humanUser;
-  };
   const resetButton = () => {
     const reset = document.querySelector('.reset');
     reset.addEventListener('click', () => {
