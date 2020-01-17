@@ -5,8 +5,8 @@ const ship = (length) => {
     if (!position.includes(num) && position.length < length) position.push(num);
   };
   const isSunk = () => position.length === length;
-  return { 
-    length, position, hit, isSunk 
+  return {
+    length, position, hit, isSunk,
   };
 };
 
