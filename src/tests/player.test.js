@@ -1,4 +1,5 @@
 import player from '../factories/player';
+
 const name = 'Human';
 const newPlayer = player(name);
 

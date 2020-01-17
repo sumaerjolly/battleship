@@ -10,7 +10,7 @@ describe('initialize gameBoard', () => {
 describe('it fills the board with a ship', () => {
   const ship3 = ship(3);
   const ship4 = ship(4);
-  let gameBoard1 = gameBoard();
+  const gameBoard1 = gameBoard();
 
   describe('vertical position', () => {
     beforeAll(() => {
@@ -29,7 +29,7 @@ describe('it fills the board with a ship', () => {
   });
 
   describe('horizontal position', () => {
-    let gameBoard2 = gameBoard();
+    const gameBoard2 = gameBoard();
 
     beforeAll(() => {
       gameBoard2.addMyShip(ship4, 25, 'h');
@@ -48,7 +48,7 @@ describe('it fills the board with a ship', () => {
 });
 
 describe('put ships in right places', () => {
-  let gameBoard3 = gameBoard();
+  const gameBoard3 = gameBoard();
   const ship4 = ship(4);
   const ship3 = ship(3);
   const ship5 = ship(5);
@@ -70,7 +70,7 @@ describe('put ships in right places', () => {
 });
 
 describe('game board define if a ship attacked', () => {
-  let gameBoard4 = gameBoard();
+  const gameBoard4 = gameBoard();
   const ship4 = ship(4);
   beforeAll(() => {
     gameBoard4.addMyShip(ship4, 15, 'h');
