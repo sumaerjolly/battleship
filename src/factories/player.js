@@ -1,13 +1,12 @@
-const player = name => {
-  let moves = [];
-  let randomMove = () => {
-    let newMove = Math.floor(Math.random() * 100);
+const player = (name) => {
+  const moves = [];
+  const randomMove = () => {
+    const newMove = Math.floor(Math.random() * 100);
     if (!moves.includes(newMove)) {
       moves.push(newMove);
       return newMove;
-    } else {
-      return randomMove();
-    }
+    } 
+    return randomMove();
   };
   return { name, randomMove };
 };

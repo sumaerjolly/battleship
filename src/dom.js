@@ -12,11 +12,18 @@ const start = (() => {
   let userCount = 0;
   let computerCount = 0;
 
+  const checkWinner = (count, user) => {
+    if (10 - count <= 0 && !gameStop) {
+      alert(`${user.name} is the winner`); // eslint-disable-line no-alert
+      gameStop = true;
+    }
+  };
+
   const game = () => {
     const oppositionShips = document.querySelectorAll('.oppShips');
-    oppositionShips.forEach(element => {
+    oppositionShips.forEach( (element) => {
       const position = element.getAttribute('id');
-      element.addEventListener('click', e => {
+      element.addEventListener('click', (e) => {
         e.preventDefault();
         if (!gameStop && element.innerHTML === '') {
           const attack = board.receiveAttacks(board.oppBoard, position);
@@ -25,8 +32,8 @@ const start = (() => {
             element.classList.add('test');
             if (board.oppBoard[position].isSunk()) {
               computerCount += 1;
-              displayInfo.innerHTML = `${10 -
-                computerCount} computer ships left`;
+              displayInfo.innerHTML = `${10 - computerCount} 
+              computer ships left`;
             }
           } else if (attack === 'miss') {
             element.innerHTML = '&#128542';
@@ -38,20 +45,13 @@ const start = (() => {
     });
   };
 
-  const checkWinner = (count, user) => {
-    if (10 - count <= 0 && !gameStop) {
-      alert(`${user.name} is the winner`);
-      gameStop = true;
-    }
-  };
-
   const computerPlay = () => {
     currPlayer = computer;
     const myShips = document.querySelectorAll('.ships');
-    let randomPosition = computer.randomMove();
+    const randomPosition = computer.randomMove();
 
     const compAttack = board.receiveAttacks(board.myBoard, randomPosition);
-    myShips.forEach(element => {
+    myShips.forEach( (element) => {
       const boardId = element.getAttribute('id');
       if (Number(boardId) === randomPosition) {
         if (compAttack === 'hit') {
