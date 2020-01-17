@@ -11,4 +11,5 @@ const player = name => {
   };
   return { name, randomMove };
 };
+
 export default player;
