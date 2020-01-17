@@ -1,17 +1,26 @@
 # PROJECT: Battleship
+The Battleship project comes at the end of the JavaScript testing section. It tests the knowledge about Test Driven Development (TDD). It is a Test Driven Development of the Battleship game.
+
+![screenshot](./screenshot.png)
 
 > This project is part of a series of projects to be completed by students of [Microverse](https://www.microverse.org/ 'The Global School for Remote Software Developers!').
 
-This is a Test Driven Development of the Battleship game.
+## Live Demo
+
+[Live Demo Link](https://rawcdn.githack.com/sumaerjolly/battleship/852aef9df203bdcda6547a817e3134c34ebdee06/dist/index.html) .
+
 
 ## Built With
 
 - HTML
 - CSS
 - JavaScript (ES6/ES2015).
-- ESlint.
-- Jest.
+- ESlint
 - Webpack
+
+## Test With
+
+- Jest
 
 To get a local copy up and running follow these simple example steps.
 
